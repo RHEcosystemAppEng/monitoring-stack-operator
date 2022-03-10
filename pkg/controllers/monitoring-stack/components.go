@@ -485,11 +485,16 @@ func newPrometheus(
 	}
 
 	if ms.Spec.PrometheusConfig != nil {
-		prometheus.Spec.Storage = &monv1.StorageSpec{
-			VolumeClaimTemplate: monv1.EmbeddedPersistentVolumeClaim{
-				Spec: ms.Spec.PrometheusConfig.PersistentVolumeClaim,
-			},
+		// spec.resources[storage]: Required value
+		// Only configure PVC if it is properly configured, or else you will get an error
+		if ms.Spec.PrometheusConfig.PersistentVolumeClaim.Resources.Requests != nil {
+			prometheus.Spec.Storage = &monv1.StorageSpec{
+				VolumeClaimTemplate: monv1.EmbeddedPersistentVolumeClaim{
+					Spec: ms.Spec.PrometheusConfig.PersistentVolumeClaim,
+				},
+			}
 		}
+
 		if ms.Spec.PrometheusConfig.RemoteWrite != nil {
 			prometheus.Spec.RemoteWrite = ms.Spec.PrometheusConfig.RemoteWrite
 		}
