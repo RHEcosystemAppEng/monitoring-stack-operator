@@ -490,6 +490,9 @@ func newPrometheus(
 				Spec: ms.Spec.PrometheusConfig.PersistentVolumeClaim,
 			},
 		}
+		if ms.Spec.PrometheusConfig.RemoteWrite != nil {
+			prometheus.Spec.RemoteWrite = ms.Spec.PrometheusConfig.RemoteWrite
+		}
 	}
 	return prometheus
 }
