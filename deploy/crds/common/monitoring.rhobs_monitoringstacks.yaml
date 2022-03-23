@@ -14,8 +14,6 @@ spec:
     listKind: MonitoringStackList
     plural: monitoringstacks
     singular: monitoringstack
-    shortNames:
-    - ms
   scope: Namespaced
   versions:
   - name: v1alpha1
