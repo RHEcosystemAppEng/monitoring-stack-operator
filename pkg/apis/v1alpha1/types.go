@@ -87,6 +87,9 @@ type PrometheusConfig struct {
 	// Define persistent volume claim for prometheus
 	// +optional
 	PersistentVolumeClaim corev1.PersistentVolumeClaimSpec `json:"persistentVolumeClaim,omitempty"`
+
+	// Define ExternalLabels for prometheus
+	ExternalLabels map[string]string `json:"externalLabels,omitempty"`
 }
 
 // NamespaceSelector is a selector for selecting either all namespaces or a

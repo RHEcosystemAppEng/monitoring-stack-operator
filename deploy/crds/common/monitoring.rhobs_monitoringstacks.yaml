@@ -14,6 +14,7 @@ spec:
     listKind: MonitoringStackList
     plural: monitoringstacks
     singular: monitoringstack
+    shortNames: ["ms"]
   scope: Namespaced
   versions:
   - name: v1alpha1
@@ -48,6 +49,11 @@ spec:
               prometheusConfig:
                 description: Define prometheus config
                 properties:
+                  externalLabels:
+                    additionalProperties:
+                      type: string
+                    description: Define ExternalLabels for prometheus
+                    type: object
                   persistentVolumeClaim:
                     description: Define persistent volume claim for prometheus
                     properties:

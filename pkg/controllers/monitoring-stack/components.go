@@ -495,8 +495,14 @@ func newPrometheus(
 			}
 		}
 
+		// Prometheus RemoteWrite Config
 		if ms.Spec.PrometheusConfig.RemoteWrite != nil {
 			prometheus.Spec.RemoteWrite = ms.Spec.PrometheusConfig.RemoteWrite
+		}
+
+		// Prometheus ExternalLabels Config
+		if ms.Spec.PrometheusConfig.ExternalLabels != nil {
+			prometheus.Spec.ExternalLabels = ms.Spec.PrometheusConfig.ExternalLabels
 		}
 	}
 	return prometheus
