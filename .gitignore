@@ -4,3 +4,6 @@ bundle.Dockerfile
 RELEASE_BODY.md
 jsonnet/vendor
 /zk8s
+
+temp.yaml
+TEST.md
